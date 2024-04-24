@@ -49,17 +49,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Funcionamento do Botão Salvar
     if (isset($_POST["salvar"])) {
-        
         $_SESSION["memoria"] = $_SESSION["visor"];
     }
     
     // Funcionamento do Botão Pegar Valores
     if (isset($_POST["pegar_valores"])) {
-        
         if (isset($_SESSION["memoria"])) {
-        
             $_SESSION["visor"] = $_SESSION["memoria"];
-        
             unset($_SESSION["memoria"]);
         }
     }
@@ -67,13 +63,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Funcionamento do Botão Memoria que é a mescla dos 2 outros botoes.
 	if (isset($_POST["memoria"])) {
 		if (isset($_SESSION["memoria"])) {
-			
 			$_SESSION["visor"] = $_SESSION["memoria"];
 			unset($_SESSION["memoria"]);
 		} else {
-			
 			$_SESSION["memoria"] = $_SESSION["visor"];
-			
 		}
 	}
     
@@ -93,68 +86,84 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/stylesheet.css">
     <title>Calculadora PHP</title>
 </head>
 <body>
-    <h1>Calculadora PHP</h1>
-    <form method="post">
-        <label for="numero1">Número 1:</label>
-        <input type="text" name="numero1" id="numero1" required><br><br>
-        
-        <label for="operacao">Operação:</label>
-        <select name="operacao" id="operacao" required>
-            <option value="+" selected>+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
-            <option value="^">^</option>
-            <option value="!">n!</option>
-        </select><br><br>
-        
-        <label for="numero2">Número 2:</label>
-        <input type="text" name="numero2" id="numero2" required><br><br>
-        
-        <input type="submit" name="calcular" value="Calcular">
-    </form>
-    
-    <br>
-    <h2>Visor:</h2>
-    <div id="visor">
-        <?php
-        if (isset($_SESSION["visor"])) {
-            echo $_SESSION["visor"];
-        }
-        ?>
+    <h1 class="titulo-principal">Calculadora PHP</h1>
+    <div class="gameboy cima">
+
+        <div class="tela">
+            <h2>Visor:</h2>
+            <div>
+                <?php
+                    if (isset($_SESSION["visor"])) {
+                        echo $_SESSION["visor"];
+                    }
+                ?>
+            </div>
+        </div>
+
+        <div class="">
+            <h2>Memoria</h2>
+            <div>
+                <?php
+                    if (isset($_SESSION["memoria"])) {
+                        echo $_SESSION["memoria"];
+                    }
+                ?>
+            </div>
+
+            <h2>Histórico:</h2>
+            <div id="historico">
+                <?php
+                if (isset($_SESSION["historico"])) {
+                    foreach ($_SESSION["historico"] as $op) {
+                        echo $op . "<br>";
+                    }
+                }
+                ?>
+            </div>
+        </div>
+
     </div>
-	
-	<h2>Memoria</h2>
-	<div id="memoria">
-	        <?php
-        if (isset($_SESSION["memoria"])) {
-            echo $_SESSION["memoria"];
-        }
-        ?>
+
+    <div class="gameboy baixo">
+        <form method="post">
+            <label for="numero1">Número 1:</label>
+            <input type="text" name="numero1" id="numero1" required><br><br>
+            
+            <label for="operacao">Operação:</label>
+            <select name="operacao" id="operacao" required>
+                <option value="+" selected>+</option>
+                <option value="-">-</option>
+                <option value="/">/</option>
+                <option value="*">*</option>
+                <option value="^">^</option>
+                <option value="!">n!</option>
+            </select><br><br>
+            
+            <label for="numero2">Número 2:</label>
+            <input type="text" name="numero2" id="numero2" required><br><br>
+            
+            <input type="submit" name="calcular" value="Calcular">
+        </form>
+
+        <br>
+        <form method="post">
+            <input type="submit" name="salvar" value="Salvar">
+            <input type="submit" name="pegar_valores" value="Pegar Valores">
+            <input type="submit" name="memoria" value="Memória">
+            <input type="submit" name="limpar_historico" value="Apagar Histórico">
+        </form>
+
     </div>
-	
-    
-    <br>
-    <form method="post">
-        <input type="submit" name="salvar" value="Salvar">
-        <input type="submit" name="pegar_valores" value="Pegar Valores">
-        <input type="submit" name="memoria" value="Memória">
-        <input type="submit" name="limpar_historico" value="Apagar Histórico">
-    </form>
-    
-    <br>
-    <h2>Histórico:</h2>
-    <div id="historico">
-        <?php
-        if (isset($_SESSION["historico"])) {
-            foreach ($_SESSION["historico"] as $op) {
-                echo $op . "<br>";
-            }
-        }
-        ?>
+        
+        
+        
+        
+        
+        
     </div>
 </body>
 </html>

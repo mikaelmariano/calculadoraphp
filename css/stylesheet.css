@@ -1,0 +1,7 @@
+* {margin: 0;}
+body {float: left; width: 100%; background: hsl(195, 100%, 85%);}
+
+.titulo-principal{position: absolute;left: 50%;transform: translateX(-50%);}
+.gameboy{width: fit-content;background: #7f9dff;bottom: 50%;right: 50%;transform: translate(50%, 50%);}
+
+
