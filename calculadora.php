@@ -85,40 +85,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
     <title>Calculadora PHP</title>
 </head>
 <body>
     <h1 class="titulo-principal">Calculadora PHP</h1>
     <div class="gameboy cima">
         <div class="esq">
-            <div class="tela">
-                <h2>Visor:</h2>
-                <div>
-                    <?php
-                        if (isset($_SESSION["visor"])) {
-                            echo $_SESSION["visor"];
-                        }
-                    ?>
+            <div class="top">
+                <div class="tela">
+                    <h2>Visor:</h2>
+                    <div>
+                        <?php
+                            if (isset($_SESSION["visor"])) {
+                                echo $_SESSION["visor"];
+                            }
+                        ?>
+                    </div>
+                </div>
+
+                <div class="memoria">
+                    <h2>Memoria</h2>
+                    <div>
+                        <?php
+                            if (isset($_SESSION["memoria"])) {
+                                echo $_SESSION["memoria"];
+                            }
+                        ?>
+                    </div>
                 </div>
             </div>
+            <div class="">
 
-            <div class="memoria">
-                <h2>Memoria</h2>
-                <div>
-                    <?php
-                        if (isset($_SESSION["memoria"])) {
-                            echo $_SESSION["memoria"];
-                        }
-                    ?>
-                </div>
             </div>
         </div>
         
-        <div class="dir">
+        <div class="dir" id="divhistorico">
             <h2>Histórico:</h2>
-            <div id="historico">
+            <div class="historico">
                 <?php
                 if (isset($_SESSION["historico"])) {
                     foreach ($_SESSION["historico"] as $op) {
@@ -127,11 +132,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 ?>
             </div>
+            <form method="post">
+                <input type="submit" name="limpar_historico" value="Apagar Histórico">
+            </form>
         </div>
     </div>
 
     <div class="gameboy baixo">
-        <div class="botao"></div>
+        <div class="botao" onclick="fechar_historico()"></div>
 
         <form method="post">
             <input type="text" name="numero1" class="num1" placeholder="Numero 1" required>
@@ -151,12 +159,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="submit" name="salvar" value="Salvar">
             <input type="submit" name="pegar_valores" value="Pegar Valores">
             <input type="submit" name="memoria" value="Memória">
-            <input type="submit" name="limpar_historico" value="Apagar Histórico">
+            <div class="verhistorico" onclick="abrir_historico()">Ver historico</div>
         </form>
 
     </div>
         
         
     </div>
+
+    <script src="js/animation.js"></script>
 </body>
 </html>

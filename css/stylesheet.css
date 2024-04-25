@@ -4,21 +4,31 @@
     --azul-escuro: #170f64;
     --azul-marinho: #000c82;
     --bege: #fffed5;
+    --bege-escuro: #bfbea3;
 }
 
 
 * {margin: 0;}
-body {float: left; width: 100%; min-height: 100vh; background: var(--azul-claro); display: flex; flex-direction: column; align-items: center; justify-content: center;}
-.titulo-principal{position: fixed; top: 20px;}
-.gameboy{position: relative; width: fit-content;background: var(--azul-padrao);}
+body {float: left; width: 100%; min-height: 100vh; padding: 0 0 50px; background: var(--azul-claro); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 100px}
+.titulo-principal{font:40px atari;margin: 30px 0 -50px;}
+h2{font: 26px atari;}
+.gameboy{position: relative; width: fit-content;}
+
+.gameboy.cima {display: flex;position: relative;}
+.gameboy.cima .esq{z-index: 2; width: 300px; border:10px solid var(--azul-escuro); box-shadow: 0 0 0 13px var(--azul-padrao); border-radius: 15px;padding: 10px;display: flex;flex-wrap: wrap;gap: 15px;}
+.gameboy.cima .esq .botao{transition:.1s; background: var(--azul-marinho); width: 55px; height: 12px; border-radius: 4px 4px 0 0; position: absolute; right: 30px;top: -35px;}
+.gameboy.cima .esq .botao:hover{height: 8px;top: -31px;}
+.gameboy.cima .dir{z-index: 1; transition:1s; width: auto; background: var(--bege); border:10px solid var(--azul-escuro); box-shadow: 0 0 0 13px var(--azul-padrao); border-radius: 0 15px 15px 0;padding: 10px;margin:20px 0 20px -170px; }
+.gameboy.cima .dir .historico{padding: 10px 0; height: 130px; overflow-y: auto;}
+
 
 .gameboy.baixo{width: 490px; background: var(--bege); border:10px solid var(--azul-escuro); margin: -10px; box-shadow: 0 0 0 13px var(--azul-padrao); border-radius: 15px;padding: 10px;display: flex;flex-wrap: wrap;gap: 15px;}
-.gameboy.baixo .botao{transition: 0.1s; background: var(--azul-marinho); width: 55px; height: 12px; border-radius: 4px 4px 0 0; position: absolute; right: 30px;top: -35px;}
+.gameboy.baixo .botao{transition:.1s; background: var(--azul-marinho); width: 55px; height: 12px; border-radius: 4px 4px 0 0; position: absolute; right: 30px;top: -35px;}
 .gameboy.baixo .botao:hover{height: 8px;top: -31px;}
-
 .gameboy.baixo form{display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%; gap: 15px}
-.gameboy.baixo input {}
-.gameboy.baixo input.num2{}
-.gameboy.baixo select{}
+.gameboy.baixo input {width: 180px; background: var(--bege-escuro); border: 0; height: 35px; border-radius: 10px; padding: 0 10px; font: 23px atari}
+.gameboy.baixo select{background: var(--bege-escuro); border: 0; height: 35px; border-radius: 10px; font: 23px atari}
+.gameboy.baixo input[name="calcular"] {cursor: pointer; transition:.2s; background: #c4dca2;}
+.gameboy.baixo input[name="calcular"]:hover {background: #8caa62;}
 .gameboy.baixo .calc{width: 100%;}
 
