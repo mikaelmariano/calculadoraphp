@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $operacao = $_POST["operacao"];
         $numero2 = $_POST["numero2"];
 
-        
         switch ($operacao) {
             case '+':
                 $resultado = $numero1 + $numero2;
@@ -87,33 +86,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <title>Calculadora PHP</title>
 </head>
 <body>
     <h1 class="titulo-principal">Calculadora PHP</h1>
     <div class="gameboy cima">
+        <div class="esq">
+            <div class="tela">
+                <h2>Visor:</h2>
+                <div>
+                    <?php
+                        if (isset($_SESSION["visor"])) {
+                            echo $_SESSION["visor"];
+                        }
+                    ?>
+                </div>
+            </div>
 
-        <div class="tela">
-            <h2>Visor:</h2>
-            <div>
-                <?php
-                    if (isset($_SESSION["visor"])) {
-                        echo $_SESSION["visor"];
-                    }
-                ?>
+            <div class="memoria">
+                <h2>Memoria</h2>
+                <div>
+                    <?php
+                        if (isset($_SESSION["memoria"])) {
+                            echo $_SESSION["memoria"];
+                        }
+                    ?>
+                </div>
             </div>
         </div>
-
-        <div class="">
-            <h2>Memoria</h2>
-            <div>
-                <?php
-                    if (isset($_SESSION["memoria"])) {
-                        echo $_SESSION["memoria"];
-                    }
-                ?>
-            </div>
-
+        
+        <div class="dir">
             <h2>Histórico:</h2>
             <div id="historico">
                 <?php
@@ -125,31 +128,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ?>
             </div>
         </div>
-
     </div>
 
     <div class="gameboy baixo">
+        <div class="botao"></div>
+
         <form method="post">
-            <label for="numero1">Número 1:</label>
-            <input type="text" name="numero1" id="numero1" required><br><br>
-            
-            <label for="operacao">Operação:</label>
-            <select name="operacao" id="operacao" required>
+            <input type="text" name="numero1" class="num1" placeholder="Numero 1" required>
+            <select name="operacao" required>
                 <option value="+" selected>+</option>
                 <option value="-">-</option>
                 <option value="/">/</option>
                 <option value="*">*</option>
                 <option value="^">^</option>
                 <option value="!">n!</option>
-            </select><br><br>
-            
-            <label for="numero2">Número 2:</label>
-            <input type="text" name="numero2" id="numero2" required><br><br>
-            
-            <input type="submit" name="calcular" value="Calcular">
+            </select>
+            <input type="text" name="numero2" class="num2" placeholder="Numero 2" required>
+            <input type="submit" name="calcular" value="Calcular" class="calc">
         </form>
 
-        <br>
         <form method="post">
             <input type="submit" name="salvar" value="Salvar">
             <input type="submit" name="pegar_valores" value="Pegar Valores">
@@ -158,10 +155,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
 
     </div>
-        
-        
-        
-        
         
         
     </div>

@@ -1,7 +1,24 @@
+:root{
+    --azul-claro: #9198f2;
+    --azul-padrao: #363ec0;
+    --azul-escuro: #170f64;
+    --azul-marinho: #000c82;
+    --bege: #fffed5;
+}
+
+
 * {margin: 0;}
-body {float: left; width: 100%; background: hsl(195, 100%, 85%);}
+body {float: left; width: 100%; min-height: 100vh; background: var(--azul-claro); display: flex; flex-direction: column; align-items: center; justify-content: center;}
+.titulo-principal{position: fixed; top: 20px;}
+.gameboy{position: relative; width: fit-content;background: var(--azul-padrao);}
 
-.titulo-principal{position: absolute;left: 50%;transform: translateX(-50%);}
-.gameboy{width: fit-content;background: #7f9dff;bottom: 50%;right: 50%;transform: translate(50%, 50%);}
+.gameboy.baixo{width: 490px; background: var(--bege); border:10px solid var(--azul-escuro); margin: -10px; box-shadow: 0 0 0 13px var(--azul-padrao); border-radius: 15px;padding: 10px;display: flex;flex-wrap: wrap;gap: 15px;}
+.gameboy.baixo .botao{transition: 0.1s; background: var(--azul-marinho); width: 55px; height: 12px; border-radius: 4px 4px 0 0; position: absolute; right: 30px;top: -35px;}
+.gameboy.baixo .botao:hover{height: 8px;top: -31px;}
 
+.gameboy.baixo form{display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%; gap: 15px}
+.gameboy.baixo input {}
+.gameboy.baixo input.num2{}
+.gameboy.baixo select{}
+.gameboy.baixo .calc{width: 100%;}
 
