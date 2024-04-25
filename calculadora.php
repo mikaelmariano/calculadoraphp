@@ -93,35 +93,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h1 class="titulo-principal">Calculadora PHP</h1>
     <div class="gameboy cima">
         <div class="esq">
-            <div class="top">
-                <div class="tela">
-                    <h2>Visor:</h2>
-                    <div>
-                        <?php
-                            if (isset($_SESSION["visor"])) {
-                                echo $_SESSION["visor"];
-                            }
-                        ?>
-                    </div>
-                </div>
+            <div class="botao"></div>
 
-                <div class="memoria">
-                    <h2>Memoria</h2>
-                    <div>
-                        <?php
-                            if (isset($_SESSION["memoria"])) {
-                                echo $_SESSION["memoria"];
-                            }
-                        ?>
+            <div class="top">
+                <div class="interno">
+                    <div class="tela">
+                        <h2>Visor:</h2>
+                        <div>
+                            <?php
+                                if (isset($_SESSION["visor"])) {
+                                    echo $_SESSION["visor"];
+                                }
+                            ?>
+                        </div>
+                    </div>
+
+                    <div class="memoria">
+                        <h2>Memoria</h2>
+                        <div>
+                            <?php
+                                if (isset($_SESSION["memoria"])) {
+                                    echo $_SESSION["memoria"];
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="">
+            <div class="bottom">
 
             </div>
         </div>
         
         <div class="dir" id="divhistorico">
+            <div class="botao"></div>
+
             <h2>Histórico:</h2>
             <div class="historico">
                 <?php
