@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="top">
                 <div class="interno">
                     <div class="tela">
-                        <h2>Visor:</h2>
+                        <h2 class="titulo">Resultado:</h2>
                         <div>
                             <?php
                                 if (isset($_SESSION["visor"])) {
@@ -121,7 +121,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             <div class="bottom">
-
+                <div class="controles">
+                    <div class="bt cima"></div>
+                    <div class="bt esqu"></div>
+                    <div class="bt meio"></div>
+                    <div class="bt dire"></div>
+                    <div class="bt baixo"></div>
+                </div>
+                <div class="botoes">
+                    <div class="bt bt1"></div>
+                    <div class="bt bt2"></div>
+                </div>
+                <div class="botoezinhos">
+                    <div class="bt"></div>
+                    <div class="bt"></div>
+                </div>
             </div>
         </div>
         
@@ -145,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <div class="gameboy baixo">
-        <div class="botao" onclick="fechar_historico()"></div>
+        <div class="botao"></div>
 
         <form method="post">
             <input type="text" name="numero1" class="num1" placeholder="Numero 1" required>
@@ -165,7 +179,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="submit" name="salvar" value="Salvar">
             <input type="submit" name="pegar_valores" value="Pegar Valores">
             <input type="submit" name="memoria" value="Memória">
-            <div class="verhistorico" onclick="abrir_historico()">Ver historico</div>
+            <div class="hist">
+                <div class="verhistorico" id="verhistorico" onclick="abrir_historico(this)">Ver historico</div>
+                <div class="verhistorico" id="fecharhistorico" onclick="fechar_historico(this)">Fechar historico</div>
+            </div>
         </form>
 
     </div>

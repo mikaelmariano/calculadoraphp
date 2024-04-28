@@ -8,7 +8,7 @@
 }
 
 
-* {margin: 0;}
+* {margin: 0;color: #4e4e4c;}
 body {float: left; width: 100%; min-height: 100vh; padding: 0 0 50px; background: var(--azul-claro); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 100px}
 .titulo-principal{font:40px atari;margin: 30px 0 -50px;}
 h2{font: 26px atari;}
@@ -16,15 +16,39 @@ h2{font: 26px atari;}
 
 
 .gameboy.cima {display: flex;position: relative;}
-.gameboy.cima .esq{z-index: 2; max-width: 400px; width: 400px; padding: 10px; background: var(--azul-padrao); box-shadow: 0 0 0 13px var(--azul-padrao); border-radius: 15px;display: flex;flex-wrap: wrap;gap: 15px}
-.gameboy.cima .esq .botao{transition:.1s; background: var(--azul-marinho); width: 55px; height: 12px; border-radius: 4px 4px 0 0; position: absolute; top: -24px;}
-.gameboy.cima .esq .botao:hover{height: 8px;top: -20px;}
-.gameboy.cima .esq .top{width: 100%; height: 215px; background: var(--azul-escuro);padding: 45px;border-radius: 20px;}
-.gameboy.cima .esq .top .interno{width: calc(100% - 20px); height: calc(100% - 20px); padding: 10px; background: var(--bege); border-radius: 10px;}
-.gameboy.cima .esq .bottom{width: 100%;}
-
-.gameboy.cima .dir{z-index: 1; transition:1s; width: auto; height: min-content; background: var(--bege); border:10px solid var(--azul-escuro); box-shadow: 0 0 0 13px var(--azul-padrao); border-radius: 0 15px 15px 0;padding: 10px;margin:20px 0 20px -170px; }
-.gameboy.cima .dir .historico{padding: 10px 0; height: 130px; overflow-y: auto;}
+.gameboy.cima .esq{z-index: 2; max-width: 400px; width: 400px; padding: 20px 20px 50px; background: var(--azul-padrao); border-radius: 15px;display: flex;flex-wrap: wrap;gap: 80px;box-shadow:12px 10px 0 #000c82, 6px 5px 0px 0px #000c82}
+.gameboy.cima .esq .botao{transition: .1s;background: var(--azul-marinho);width: 12px;height: 55px;border-radius: 4px 0 0 4px;position: absolute;top: 40px;left: -12px;}
+.gameboy.cima .esq .botao:hover{width: 8px;left: -8px;}
+.gameboy.cima .esq .top{position: relative; width: calc(100% - 90px); height: 215px; background: var(--azul-escuro);padding: 45px;border-radius: 10px;}
+.gameboy.cima .esq .top::before {content: "";display: block;width: 15px;height: 15px;background: red;border-radius: 50%;position: absolute;left: 15px;top: 65px;box-shadow: 1px 2px 0 #630000;}
+.gameboy.cima .esq .top .interno{position: relative; width: calc(100% - 20px); height: calc(100% - 20px); padding: 10px; border-radius: 5px; background: var(--bege);display: flex;flex-direction: column;justify-content: space-between;}
+.gameboy.cima .esq .top .interno::after{content: ""; width: 50px; height: 36px; background: url(../img/space-invaders.png)no-repeat center;display: block;position: absolute;right: 15px;bottom: 10px;filter: brightness(0) saturate(100%) invert(85%) sepia(3%) saturate(1659%) hue-rotate(19deg) brightness(87%) contrast(85%);}
+.gameboy.cima .esq .top .interno .titulo{width: fit-content; background: var(--bege-escuro);padding: 4px 6px;border-radius: 13px;margin: 0 auto;}
+.gameboy.cima .esq .top .interno .tela div{font: 35px atari; max-height: 105px; margin:4px 0 0;overflow: hidden;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 3;white-space: normal;}
+.gameboy.cima .esq .top .interno .memoria {padding: 0 60px 0 0}
+.gameboy.cima .esq .top .interno .memoria div{font: 18px atari; height: 20px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.gameboy.cima .esq .bottom{width: 100%;display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;padding: 0 5%;gap:70px}
+.gameboy.cima .esq .bottom .controles{position: relative;width: 35px;padding: 35px;height: 35px;}
+.gameboy.cima .esq .bottom .controles .bt{position: absolute; height: 35px; width: 35px; background: var(--azul-marinho);box-shadow: 3px 3px 0 #0b0543;}
+.gameboy.cima .esq .bottom .controles .bt:hover{transform: translate(1px, 1px); box-shadow: 1px 1px #0b0543;}
+.gameboy.cima .esq .bottom .controles .bt.cima{top: 0;border-radius: 10px 10px 0 0}
+.gameboy.cima .esq .bottom .controles .bt.esqu{left: 0;border-radius: 10px 0 0 10px}
+.gameboy.cima .esq .bottom .controles .bt.meio{box-shadow: none !important; transform: none !important;}
+.gameboy.cima .esq .bottom .controles .bt.dire{right: 0;border-radius: 0 10px 10px 0; width: 39px}
+.gameboy.cima .esq .bottom .controles .bt.baixo{bottom: 0;border-radius: 0 0 10px 10px; height: 37px}
+.gameboy.cima .esq .bottom .botoes{width: 26%;display: grid;gap: 10px;}
+.gameboy.cima .esq .bottom .botoes .bt{width: 45px; height: 45px; background: var(--azul-marinho);border-radius: 50%;box-shadow: 2px 3px 0 #0b0543;}
+.gameboy.cima .esq .bottom .botoes .bt:hover{position: relative;right: -1px;bottom: -2px;box-shadow: 1px 1px #0b0543;}
+.gameboy.cima .esq .bottom .botoes .bt1{justify-self: flex-end;}
+.gameboy.cima .esq .bottom .botoes .bt2{}
+.gameboy.cima .esq .bottom .botoezinhos{width: 100%;display: flex;gap: 35px;justify-content: center;align-items: center;}
+.gameboy.cima .esq .bottom .botoezinhos .bt{width: 45px; height: 13px; background: var(--azul-marinho);border-radius: 5px;box-shadow: 2px 3px 0 #0b0543;}
+.gameboy.cima .esq .bottom .botoezinhos .bt:hover{position: relative;right: -1px;bottom: -1px;box-shadow: 1px 1px #0b0543;}
+.gameboy.cima .dir{z-index: 1; transition:1s; width: 200px; height: min-content; background: var(--bege); border:10px solid var(--azul-escuro); box-shadow: 0 0 0 13px var(--azul-padrao); border-radius: 0 15px 15px 0;padding: 10px;margin:20px 0 20px -250px; }
+.gameboy.cima .dir .historico{padding: 10px 0; height: 130px; overflow-y: auto;font: 18px atari;line-height: 25px;}
+.gameboy.cima .dir form {display: flex;justify-content: center;}
+.gameboy.cima .dir form input{transition:.1s; background: #dcaaaa;border: 0;height: 29px;border-radius: 10px;padding: 0 10px;font: 18px atari;margin: 10px 0 0;}
+.gameboy.cima .dir form input:hover{background: #dc8686;cursor: pointer;}
 .gameboy.cima .dir .botao{transition: .1s;background: var(--azul-marinho);width: 12px;height: 30px;border-radius: 0 4px 4px 0;position: absolute;right: -24px;}
 .gameboy.cima .dir .botao:hover{width: 8px;right: -20px;}
 
@@ -36,5 +60,8 @@ h2{font: 26px atari;}
 .gameboy.baixo select{background: var(--bege-escuro); border: 0; height: 35px; border-radius: 10px; font: 23px atari}
 .gameboy.baixo input[name="calcular"] {cursor: pointer; transition:.2s; background: #c4dca2;}
 .gameboy.baixo input[name="calcular"]:hover {background: #8caa62;}
+.gameboy.baixo .hist {position: relative; display: flex;width: 180px;}
+.gameboy.baixo .hist div {z-index: 1; width: 180px;background: var(--bege-escuro);border: 0;height: 35px;border-radius: 10px;font: 20px atari;position: absolute;right: 0;bottom: 0;display: flex;align-items: center;justify-content: center;cursor: pointer;}
+.gameboy.baixo .hist div#verhistorico {z-index: 2;}
 .gameboy.baixo .calc{width: 100%;}
 
