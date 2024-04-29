@@ -47,8 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Funcionamento do Botão Salvar
+    // if (isset($_POST["salvar"])) {
+    //     $_SESSION["memoria"] = $_SESSION["visor"];
+    // }
     if (isset($_POST["salvar"])) {
-        $_SESSION["memoria"] = $_SESSION["visor"];
+        if (isset($_SESSION["visor"]) && !empty($_SESSION["visor"])) {
+            $_SESSION["memoria"] = $_SESSION["visor"];
+        }
     }
     
     // Funcionamento do Botão Pegar Valores
@@ -60,14 +65,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 	
     // Funcionamento do Botão Memoria que é a mescla dos 2 outros botoes.
-	if (isset($_POST["memoria"])) {
-		if (isset($_SESSION["memoria"])) {
-			$_SESSION["visor"] = $_SESSION["memoria"];
-			unset($_SESSION["memoria"]);
-		} else {
-			$_SESSION["memoria"] = $_SESSION["visor"];
-		}
-	}
+    if (isset($_POST["memoria"])) {
+        // Verifica se o visor tem algo para trabalhar com a memória
+        if (!empty($_SESSION["visor"])) {
+            if (isset($_SESSION["memoria"])) {
+                $_SESSION["visor"] = $_SESSION["memoria"];
+                unset($_SESSION["memoria"]);
+            } else {
+                $_SESSION["memoria"] = $_SESSION["visor"];
+            }
+        }
+    }
     
     // Funcionamento do Botão Limpar Historico
     if (isset($_POST["limpar_historico"])) {
